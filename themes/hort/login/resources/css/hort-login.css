@@ -1,0 +1,128 @@
+:root {
+  --hort-bg: #f5f5f5;
+  --hort-surface: #ffffff;
+  --hort-text: rgba(0, 0, 0, 0.88);
+  --hort-muted: rgba(0, 0, 0, 0.45);
+  --hort-border: #f0f0f0;
+  --hort-primary: #1677ff;
+  --hort-primary-hover: #4096ff;
+  --hort-accent: #722ed1;
+  --hort-radius: 8px;
+}
+
+.hort-login body {
+  min-height: 100vh;
+  background:
+    linear-gradient(135deg, rgba(22, 119, 255, 0.08), rgba(114, 46, 209, 0.08)),
+    var(--hort-bg);
+  color: var(--hort-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.login-pf-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.login-pf-page .card-pf {
+  width: min(100%, 420px);
+  margin: 0;
+  padding: 32px;
+  border: 1px solid var(--hort-border);
+  border-radius: var(--hort-radius);
+  background: var(--hort-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.login-pf-header {
+  margin-bottom: 24px;
+}
+
+#kc-header-wrapper {
+  padding: 0;
+  color: var(--hort-accent);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+#kc-page-title {
+  margin: 0;
+  color: var(--hort-text);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+#kc-form-options,
+#kc-info,
+#kc-registration,
+.instruction {
+  color: var(--hort-muted);
+  font-size: 14px;
+}
+
+.pf-c-form-control,
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  min-height: 40px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  color: var(--hort-text);
+  box-shadow: none;
+}
+
+.pf-c-form-control:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  border-color: var(--hort-primary);
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.14);
+}
+
+.pf-c-button.pf-m-primary,
+input[type="submit"] {
+  min-height: 40px;
+  border: 1px solid var(--hort-primary);
+  border-radius: 6px;
+  background: var(--hort-primary);
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+}
+
+.pf-c-button.pf-m-primary:hover,
+input[type="submit"]:hover {
+  border-color: var(--hort-primary-hover);
+  background: var(--hort-primary-hover);
+}
+
+a {
+  color: var(--hort-primary);
+}
+
+a:hover {
+  color: var(--hort-primary-hover);
+}
+
+.pf-c-alert,
+.alert-error {
+  border-radius: 6px;
+}
+
+@media (max-width: 480px) {
+  .login-pf-page {
+    align-items: stretch;
+    padding: 16px;
+  }
+
+  .login-pf-page .card-pf {
+    width: 100%;
+    padding: 24px 20px;
+  }
+}
