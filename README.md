@@ -35,6 +35,17 @@ podman run -d \
 
 En Docker Compose o Hetzner, asegura que esas variables lleguen al contenedor de Keycloak. Keycloak resuelve los placeholders durante el import del realm.
 
+## Tenant de aplicación
+
+Cada usuario de la aplicación pertenece a un único Hort. Su atributo de usuario
+`hort_id` contiene el UUID canónico del Hort y el client scope `hort-tenant` lo
+publica como claim `hort_id` en los access e ID tokens.
+
+El backend trata este claim como obligatorio y no acepta el tenant desde los
+DTOs de negocio. Al crear usuarios, asigna siempre un único valor UUID al
+atributo `hort_id`; los roles (`HORT_ADMIN`, `ASSISTANT`, `PARENT`) se asignan
+independientemente y definen permisos dentro de ese Hort.
+
 ## Theme de login
 
 El theme esta en `themes/hort/login` y se monta dentro del contenedor en `/opt/keycloak/themes`.
