@@ -6,6 +6,7 @@ Variables:
 
 - `HORT_REALM_NAME`: nombre del realm que se importara.
 - `HORT_ADMIN_PASSWORD`: password inicial del usuario `admin` dentro del realm.
+- `HORT_2_ADMIN_PASSWORD`: password inicial del usuario local `hort2-admin`.
 - `HORT_LOGIN_THEME`: theme de login que usara el realm.
 - `KEYCLOAK_ADMIN`: usuario admin bootstrap de Keycloak.
 - `KEYCLOAK_ADMIN_PASSWORD`: password admin bootstrap de Keycloak.
@@ -45,6 +46,19 @@ El backend trata este claim como obligatorio y no acepta el tenant desde los
 DTOs de negocio. Al crear usuarios, asigna siempre un único valor UUID al
 atributo `hort_id`; los roles (`HORT_ADMIN`, `ASSISTANT`, `PARENT`) se asignan
 independientemente y definen permisos dentro de ese Hort.
+
+Los datos de desarrollo mantienen esta correspondencia:
+
+| Grupo raiz en Keycloak | `hort_id` del token y de PostgreSQL | Usuario de prueba |
+| --- | --- | --- |
+| `HORT-1` | `11111111-1111-1111-1111-111111111111` | `admin` |
+| `HORT-2` | `22222222-2222-2222-2222-222222222222` | `hort2-admin` |
+
+La clave de `hort2-admin` se toma de `HORT_2_ADMIN_PASSWORD`. Para desarrollo
+local puede usarse `hort2-admin-local-only`; no reutilices este valor fuera del
+entorno local ni guardes credenciales reales en Git. Los grupos secundarios
+`ADMINS`, `ASSISTANTS` y `PARENTS` heredan respectivamente los realm roles
+`HORT_ADMIN`, `ASSISTANT` y `PARENT`.
 
 ## Theme de login
 

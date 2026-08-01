@@ -455,8 +455,8 @@
         },
         {
           "id": "ed6691e4-6de1-4168-ae4a-40b20508f288",
-          "name": "ASSISTANS",
-          "path": "/HORT-1/ASSISTANS",
+          "name": "ASSISTANTS",
+          "path": "/HORT-1/ASSISTANTS",
           "parentId": "11e73bac-2f14-4e00-800f-76f887b079cd",
           "subGroups": [],
           "attributes": {},
@@ -472,7 +472,9 @@
           "parentId": "11e73bac-2f14-4e00-800f-76f887b079cd",
           "subGroups": [],
           "attributes": {},
-          "realmRoles": [],
+          "realmRoles": [
+            "PARENT"
+          ],
           "clientRoles": {}
         }
       ],
@@ -492,7 +494,9 @@
           "parentId": "b9615280-4cc9-4624-bd2a-cc12d5ee2238",
           "subGroups": [],
           "attributes": {},
-          "realmRoles": [],
+          "realmRoles": [
+            "HORT_ADMIN"
+          ],
           "clientRoles": {}
         },
         {
@@ -502,7 +506,9 @@
           "parentId": "b9615280-4cc9-4624-bd2a-cc12d5ee2238",
           "subGroups": [],
           "attributes": {},
-          "realmRoles": [],
+          "realmRoles": [
+            "ASSISTANT"
+          ],
           "clientRoles": {}
         },
         {
@@ -512,7 +518,9 @@
           "parentId": "b9615280-4cc9-4624-bd2a-cc12d5ee2238",
           "subGroups": [],
           "attributes": {},
-          "realmRoles": [],
+          "realmRoles": [
+            "PARENT"
+          ],
           "clientRoles": {}
         }
       ],
@@ -641,7 +649,38 @@
       ],
       "notBefore": 0,
       "groups": [
-        "/HORT-1/ASSISTANS"
+        "/HORT-1/ASSISTANTS"
+      ]
+    },
+    {
+      "id": "8d4c9bf3-7d9d-4ac8-9a54-7da1ab89f202",
+      "username": "hort2-admin",
+      "firstName": "Hort 2",
+      "lastName": "Admin",
+      "email": "admin@hort2.local",
+      "emailVerified": true,
+      "attributes": {
+        "hort_id": [
+          "22222222-2222-2222-2222-222222222222"
+        ]
+      },
+      "enabled": true,
+      "totp": false,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "${HORT_2_ADMIN_PASSWORD}",
+          "temporary": false
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "default-roles-hort"
+      ],
+      "notBefore": 0,
+      "groups": [
+        "/HORT-2/ADMINS"
       ]
     }
   ],
