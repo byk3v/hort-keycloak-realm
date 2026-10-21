@@ -14,5 +14,5 @@ podman run -d \
   --env-file "$SCRIPT_DIR/.env" \
   -v "$SCRIPT_DIR:/opt/keycloak/data/import:ro" \
   -v "$SCRIPT_DIR/themes:/opt/keycloak/themes:ro" \
-  quay.io/keycloak/keycloak:latest \
+  quay.io/keycloak/keycloak:26.5.6 \
   start-dev --import-realm
