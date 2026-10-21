@@ -2,6 +2,32 @@
 
 `Hort-realm.json` usa placeholders de variables de entorno para no guardar secretos dentro del export del realm.
 
+El contenedor local usa la imagen fijada `quay.io/keycloak/keycloak:26.5.6`.
+Para mantener el entorno reproducible, actualiza esa versión explícitamente
+después de validar una nueva versión; no uses la etiqueta flotante `latest`.
+El arranque del workspace verifica que un contenedor `keycloak` existente use
+esa misma imagen y se detiene con un mensaje si detecta otra versión.
+
+`Hort-realm.json` se exportó desde la instancia local 26.5.6. Conserva los
+placeholders de entorno y omite los componentes de claves criptográficas de la
+instancia, porque contienen material secreto. Al crear un realm local nuevo,
+Keycloak inicializa sus propias claves y será necesario volver a iniciar sesión
+para obtener tokens firmados con ellas.
+
+Para actualizar un contenedor local antiguo, primero exporta cualquier dato del
+realm que necesites conservar. Desde `hort-keycloak-realm/`, elimina el
+contenedor anterior y arranca el workspace desde su raíz para que lo cree con
+la imagen fijada:
+
+```bash
+podman rm -f keycloak
+cd ..
+./start-local.sh
+```
+
+Eliminar el contenedor puede borrar datos locales del realm que no estén en
+`Hort-realm.json` ni exportados aparte.
+
 Variables:
 
 - `HORT_REALM_NAME`: nombre del realm que se importara.
@@ -30,7 +56,7 @@ podman run -d \
   --env-file .env \
   -v "$PWD:/opt/keycloak/data/import:ro" \
   -v "$PWD/themes:/opt/keycloak/themes:ro" \
-  quay.io/keycloak/keycloak:latest \
+  quay.io/keycloak/keycloak:26.5.6 \
   start-dev --import-realm
 ```
 

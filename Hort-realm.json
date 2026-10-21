@@ -173,14 +173,14 @@
               "realm-management": [
                 "manage-identity-providers",
                 "manage-events",
-                "create-client",
                 "impersonation",
+                "create-client",
                 "view-authorization",
                 "view-users",
-                "view-realm",
                 "manage-realm",
-                "manage-users",
+                "view-realm",
                 "query-users",
+                "manage-users",
                 "query-clients",
                 "query-realms",
                 "manage-authorization",
@@ -604,8 +604,8 @@
           "11111111-1111-1111-1111-111111111111"
         ]
       },
-      "createdTimestamp": 1762339580488,
       "enabled": true,
+      "createdTimestamp": 1762339580488,
       "totp": false,
       "credentials": [
         {
@@ -625,34 +625,6 @@
       ]
     },
     {
-      "id": "2cd828b9-dc14-42ba-bb47-15c79c946b92",
-      "username": "teacher",
-      "firstName": "Teacher-1",
-      "lastName": "Test",
-      "email": "teacher1@internal.hort",
-      "emailVerified": true,
-      "attributes": {
-        "hort_id": [
-          "11111111-1111-1111-1111-111111111111"
-        ],
-        "locale": [
-          "de"
-        ]
-      },
-      "createdTimestamp": 1761586226883,
-      "enabled": true,
-      "totp": false,
-      "disableableCredentialTypes": [],
-      "requiredActions": [],
-      "realmRoles": [
-        "default-roles-hort"
-      ],
-      "notBefore": 0,
-      "groups": [
-        "/HORT-1/ASSISTANTS"
-      ]
-    },
-    {
       "id": "8d4c9bf3-7d9d-4ac8-9a54-7da1ab89f202",
       "username": "hort2-admin",
       "firstName": "Hort 2",
@@ -665,6 +637,7 @@
         ]
       },
       "enabled": true,
+      "createdTimestamp": 1785596522313,
       "totp": false,
       "credentials": [
         {
@@ -681,6 +654,35 @@
       "notBefore": 0,
       "groups": [
         "/HORT-2/ADMINS"
+      ]
+    },
+    {
+      "id": "2cd828b9-dc14-42ba-bb47-15c79c946b92",
+      "username": "teacher",
+      "firstName": "Teacher-1",
+      "lastName": "Test",
+      "email": "teacher1@internal.hort",
+      "emailVerified": true,
+      "attributes": {
+        "locale": [
+          "de"
+        ],
+        "hort_id": [
+          "11111111-1111-1111-1111-111111111111"
+        ]
+      },
+      "enabled": true,
+      "createdTimestamp": 1761586226883,
+      "totp": false,
+      "credentials": [],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "default-roles-hort"
+      ],
+      "notBefore": 0,
+      "groups": [
+        "/HORT-1/ASSISTANTS"
       ]
     }
   ],
@@ -709,13 +711,13 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/${HORT_REALM_NAME}/account/",
+      "baseUrl": "/realms/Hort/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/${HORT_REALM_NAME}/account/*"
+        "/realms/Hort/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -756,13 +758,13 @@
       "clientId": "account-console",
       "name": "${client_account-console}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/${HORT_REALM_NAME}/account/",
+      "baseUrl": "/realms/Hort/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/${HORT_REALM_NAME}/account/*"
+        "/realms/Hort/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -831,7 +833,8 @@
       "protocol": "openid-connect",
       "attributes": {
         "realm_client": "false",
-        "client.use.lightweight.access.token.enabled": "true"
+        "client.use.lightweight.access.token.enabled": "true",
+        "post.logout.redirect.uris": "+"
       },
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": true,
@@ -873,7 +876,8 @@
       "frontchannelLogout": false,
       "protocol": "openid-connect",
       "attributes": {
-        "realm_client": "true"
+        "realm_client": "true",
+        "post.logout.redirect.uris": "+"
       },
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
@@ -943,9 +947,9 @@
       "fullScopeAllowed": true,
       "nodeReRegistrationTimeout": -1,
       "defaultClientScopes": [
-        "hort-tenant",
         "web-origins",
         "acr",
+        "hort-tenant",
         "profile",
         "roles",
         "basic",
@@ -972,8 +976,8 @@
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "http://localhost:3000/*",
-        "https://kubuci.de/*"
+        "https://kubuci.de/*",
+        "http://localhost:3000/*"
       ],
       "webOrigins": [
         "*"
@@ -1001,9 +1005,9 @@
       "fullScopeAllowed": true,
       "nodeReRegistrationTimeout": -1,
       "defaultClientScopes": [
-        "hort-tenant",
         "web-origins",
         "acr",
+        "hort-tenant",
         "profile",
         "roles",
         "basic",
@@ -1038,7 +1042,8 @@
       "frontchannelLogout": false,
       "protocol": "openid-connect",
       "attributes": {
-        "realm_client": "true"
+        "realm_client": "true",
+        "post.logout.redirect.uris": "+"
       },
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
@@ -1064,13 +1069,13 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/${HORT_REALM_NAME}/console/",
+      "baseUrl": "/admin/Hort/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/admin/${HORT_REALM_NAME}/console/*"
+        "/admin/Hort/console/*"
       ],
       "webOrigins": [
         "+"
@@ -1131,35 +1136,6 @@
   ],
   "clientScopes": [
     {
-      "id": "7c4d566f-aa09-4f14-8f3d-bb4140dc91dc",
-      "name": "hort-tenant",
-      "description": "HORT tenant identity derived from the authenticated user",
-      "protocol": "openid-connect",
-      "attributes": {
-        "include.in.token.scope": "false",
-        "display.on.consent.screen": "false"
-      },
-      "protocolMappers": [
-        {
-          "id": "3f8d7497-3052-4e56-bf3e-a4949da8cfb7",
-          "name": "hort_id",
-          "protocol": "openid-connect",
-          "protocolMapper": "oidc-usermodel-attribute-mapper",
-          "consentRequired": false,
-          "config": {
-            "introspection.token.claim": "true",
-            "userinfo.token.claim": "true",
-            "user.attribute": "hort_id",
-            "id.token.claim": "true",
-            "access.token.claim": "true",
-            "claim.name": "hort_id",
-            "jsonType.label": "String",
-            "multivalued": "false"
-          }
-        }
-      ]
-    },
-    {
       "id": "b603a5f3-3c7e-489c-92a4-c43a9d701538",
       "name": "address",
       "description": "OpenID Connect built-in scope: address",
@@ -1187,6 +1163,63 @@
             "user.attribute.region": "region",
             "access.token.claim": "true",
             "user.attribute.locality": "locality"
+          }
+        }
+      ]
+    },
+    {
+      "id": "8fa0d673-57bb-4c9a-a8c8-d2f27e96fe30",
+      "name": "service_account",
+      "description": "Specific scope for a client enabled for service accounts",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "false",
+        "display.on.consent.screen": "false"
+      },
+      "protocolMappers": [
+        {
+          "id": "53b39cff-3b1e-4aa3-b586-64eb5b43a5c0",
+          "name": "Client ID",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usersessionmodel-note-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.session.note": "client_id",
+            "id.token.claim": "true",
+            "introspection.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "client_id",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "id": "92c26092-44cf-4fd3-ae6d-517c38e7775b",
+          "name": "Client Host",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usersessionmodel-note-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.session.note": "clientHost",
+            "id.token.claim": "true",
+            "introspection.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "clientHost",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "id": "3ce9118a-e578-4ab6-95f0-6871a5deeed9",
+          "name": "Client IP Address",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usersessionmodel-note-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.session.note": "clientAddress",
+            "id.token.claim": "true",
+            "introspection.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "clientAddress",
+            "jsonType.label": "String"
           }
         }
       ]
@@ -1220,7 +1253,8 @@
           "config": {
             "id.token.claim": "true",
             "introspection.token.claim": "true",
-            "access.token.claim": "true"
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
           }
         }
       ]
@@ -1243,12 +1277,13 @@
           "protocolMapper": "oidc-organization-membership-mapper",
           "consentRequired": false,
           "config": {
-            "id.token.claim": "true",
             "introspection.token.claim": "true",
+            "multivalued": "true",
+            "userinfo.token.claim": "true",
+            "id.token.claim": "true",
             "access.token.claim": "true",
             "claim.name": "organization",
-            "jsonType.label": "String",
-            "multivalued": "true"
+            "jsonType.label": "String"
           }
         }
       ]
@@ -1342,6 +1377,7 @@
           "config": {
             "introspection.token.claim": "true",
             "multivalued": "true",
+            "userinfo.token.claim": "true",
             "user.attribute": "foo",
             "id.token.claim": "true",
             "access.token.claim": "true",
@@ -1393,8 +1429,9 @@
           "consentRequired": false,
           "config": {
             "user.session.note": "AUTH_TIME",
-            "id.token.claim": "true",
             "introspection.token.claim": "true",
+            "userinfo.token.claim": "true",
+            "id.token.claim": "true",
             "access.token.claim": "true",
             "claim.name": "auth_time",
             "jsonType.label": "long"
@@ -1736,6 +1773,35 @@
       ]
     },
     {
+      "id": "7c4d566f-aa09-4f14-8f3d-bb4140dc91dc",
+      "name": "hort-tenant",
+      "description": "HORT tenant identity derived from the authenticated user",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "false",
+        "display.on.consent.screen": "false"
+      },
+      "protocolMappers": [
+        {
+          "id": "3f8d7497-3052-4e56-bf3e-a4949da8cfb7",
+          "name": "hort_id",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "introspection.token.claim": "true",
+            "userinfo.token.claim": "true",
+            "multivalued": "false",
+            "user.attribute": "hort_id",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "hort_id",
+            "jsonType.label": "String"
+          }
+        }
+      ]
+    },
+    {
       "id": "01390e4d-28b3-4099-8c9f-72501ba8da11",
       "name": "phone",
       "description": "OpenID Connect built-in scope: phone",
@@ -1860,13 +1926,13 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
+            "oidc-usermodel-attribute-mapper",
+            "saml-user-attribute-mapper",
+            "saml-user-property-mapper",
             "oidc-usermodel-property-mapper",
             "oidc-sha256-pairwise-sub-mapper",
             "oidc-full-name-mapper",
             "saml-role-list-mapper",
-            "oidc-usermodel-attribute-mapper",
-            "saml-user-attribute-mapper",
-            "saml-user-property-mapper",
             "oidc-address-mapper"
           ]
         }
@@ -1907,12 +1973,12 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-full-name-mapper",
-            "oidc-usermodel-property-mapper",
-            "saml-user-attribute-mapper",
-            "oidc-usermodel-attribute-mapper",
             "saml-user-property-mapper",
+            "oidc-usermodel-property-mapper",
+            "oidc-usermodel-attribute-mapper",
+            "saml-user-attribute-mapper",
             "saml-role-list-mapper",
+            "oidc-full-name-mapper",
             "oidc-address-mapper",
             "oidc-sha256-pairwise-sub-mapper"
           ]
@@ -2655,6 +2721,15 @@
       "config": {}
     },
     {
+      "alias": "idp_link",
+      "name": "Linking Identity Provider",
+      "providerId": "idp_link",
+      "enabled": true,
+      "defaultAction": false,
+      "priority": 120,
+      "config": {}
+    },
+    {
       "alias": "update_user_locale",
       "name": "Update User Locale",
       "providerId": "update_user_locale",
@@ -2676,8 +2751,8 @@
     "cibaExpiresIn": "120",
     "cibaAuthRequestedUserHint": "login_hint",
     "oauth2DeviceCodeLifespan": "600",
-    "oauth2DevicePollingInterval": "5",
     "clientOfflineSessionMaxLifespan": "0",
+    "oauth2DevicePollingInterval": "5",
     "clientSessionIdleTimeout": "0",
     "parRequestUriLifespan": "60",
     "clientSessionMaxLifespan": "0",
@@ -2685,9 +2760,11 @@
     "cibaInterval": "5",
     "realmReusableOtpCode": "false"
   },
-  "keycloakVersion": "26.0.8",
+  "keycloakVersion": "26.5.6",
   "userManagedAccessAllowed": false,
   "organizationsEnabled": false,
+  "verifiableCredentialsEnabled": false,
+  "adminPermissionsEnabled": false,
   "clientProfiles": {
     "profiles": []
   },
